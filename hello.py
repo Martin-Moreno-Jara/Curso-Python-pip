@@ -1,0 +1,1 @@
+print("hola desde este computador y el curso de pip")
