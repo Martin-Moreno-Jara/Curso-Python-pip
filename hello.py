@@ -1,1 +1,6 @@
-print("hola desde este computador y el curso de pip")
+while True:
+    respuesta = input("Parar?: ")
+    if respuesta == "y":
+        break
+    else:
+        continue
