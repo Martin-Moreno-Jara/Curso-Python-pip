@@ -1,6 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
-import app.charts
+import charts
 
 def get_dictionary_from_csv(path): #Obtener del csv una lista de diccionarios de los paises
   with open(path,"r+") as csv_file:
@@ -49,19 +49,31 @@ def separate_values(data):
   fig, ax = plt.subplots()
   ax.bar(labels,values)
   plt.show()'''
-      
+
+def get_world_percentage(data):
+  data = list(filter(lambda pais: pais["Continent"]=="Asia",data))
+  new_dict = {}
+  for i in data:
+    country = i["Country/Territory"]
+    new_dict[country] = i["World Population Percentage"]
+  return new_dict
+
+pop_percentage = get_world_percentage(get_dictionary_from_csv("data.csv"))
+
+labels_pie, values_pie = separate_values(pop_percentage)
+
 if __name__ == "__main__":
-  csv_dictionary = get_dictionary_from_csv("./app/data.csv")
-  #print(csv_dictionary[0])
+  csv_dictionary = get_dictionary_from_csv("data.csv")
+ 
   print(type(csv_dictionary))
   pais = input("Qúe pais: ")
   new_dict = get_country(csv_dictionary,pais)
-  #print(new_dict)
- # print()
+
   only_population = get_population(new_dict)
-  #print(only_population)
+
   labels, values = separate_values(only_population)
 
   print(labels)
   print(values)
-  charts.generate_bar_chart(labels,values)
+  charts.generate_bar_chart(labels,values,pais)
+  charts.generate_pie_chart(labels_pie,values_pie)

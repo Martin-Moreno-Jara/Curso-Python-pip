@@ -1,15 +1,15 @@
 import matplotlib.pyplot as plt
 
-def generate_bar_chart(labels,values):
+def generate_bar_chart(labels,values,name):
   fig, ax = plt.subplots()
   ax.bar(labels,values)
-  plt.show()
+  plt.savefig(f"./img/{name}.png")
 
 def generate_pie_chart(labels,values):
   fig, ax = plt.subplots()
   ax.pie(values,labels=labels)
   ax.axis("equal")
-  plt.show()
+  plt.savefig("./img/pie.png")
 
 if __name__ == "__main__":
   labels = ["A","B","C","D"]
