@@ -9,7 +9,7 @@ def generate_pie_chart(labels,values):
   fig, ax = plt.subplots()
   ax.pie(values,labels=labels)
   ax.axis("equal")
-  plt.savefig("./img/pie.png")
+  plt.savefig("./img/chart_pie_final_finalissimo.png")
 
 if __name__ == "__main__":
   labels = ["A","B","C","D"]
